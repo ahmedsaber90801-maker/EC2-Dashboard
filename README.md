@@ -60,4 +60,9 @@ region = YOUR_REGION
 
 python app.py
 Open your browser:
-enter the IP 
+enter the IP
+
+## 📷 Screenshot
+
+![App Screenshot](screenshot.png)
+ 

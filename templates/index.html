@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EC2 Dashboard</title>
+    <style>
+        table { border-collapse: collapse; width: 80%; margin: 20px auto; }
+        th, td { border: 1px solid #ccc; padding: 10px; text-align: center; }
+        th { background-color: #f4f4f4; }
+        a.button { padding: 5px 10px; text-decoration: none; border: 1px solid #333; border-radius: 5px; margin: 0 5px; }
+        a.start { background-color: #4CAF50; color: white; }
+        a.stop { background-color: #f44336; color: white; }
+    </style>
+</head>
+<body>
+    <h2 style="text-align:center;">EC2 Instances Dashboard</h2>
+    <table>
+        <tr>
+            <th>Instance ID</th>
+            <th>Type</th>
+            <th>State</th>
+            <th>Public IP</th>
+            <th>Actions</th>
+        </tr>
+        {% for i in instances %}
+        <tr>
+            <td>{{ i.InstanceId }}</td>
+            <td>{{ i.Type }}</td>
+            <td>{{ i.State }}</td>
+            <td>{{ i.PublicIP }}</td>
+            <td>
+                <a href="{{ url_for('start_instance', instance_id=i.InstanceId) }}" class="button start">Start</a>
+                <a href="{{ url_for('stop_instance', instance_id=i.InstanceId) }}" class="button stop">Stop</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+
